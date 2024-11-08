@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import "./styles/type";
+
+
+body {
+  font-weight: 400;
+  font-display: swap;
+  line-height: 1.75;
+
+}
