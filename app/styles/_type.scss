@@ -1,0 +1,138 @@
+$d1-size: 5.5rem;
+$h1-size: 4rem;
+$h2-size: 3rem;
+$h3-size: 2.25rem;
+$h4-size: 1.5rem;
+$h5-size: 1.375rem;
+$lead-size: 1.15rem;
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-size: 1rem;
+}
+
+h1 {
+  // @apply font-extrabold leading-none tracking-tight text-slate-800 dark:text-slate-400;
+  font-size: $h1-size;
+  font-weight: theme("fontWeight.medium");
+  line-height: theme("lineHeight.none");
+  letter-spacing: theme("letterSpacing.tight");
+  color: theme("textColor.slate.800");
+
+  @media screen and (max-width: 1024px) {
+    font-size: calc($h1-size / 1.5);
+  }
+}
+
+h2 {
+  // @apply font-medium tracking-tight text-slate-800 dark:text-slate-400;
+  font-size: $h2-size;
+  font-weight: theme("fontWeight.semibold");
+  letter-spacing: theme("letterSpacing.tight");
+  color: theme("textColor.slate.800");
+
+  @media screen and (max-width: 1024px) {
+    font-size: calc($h2-size / 1.5);
+  }
+}
+
+h3 {
+  // @apply font-bold tracking-tight text-slate-800 dark:text-slate-400;
+  font-size: $h3-size;
+  font-weight: theme("fontWeight.bold");
+  letter-spacing: theme("letterSpacing.tight");
+  color: theme("textColor.slate.800");
+
+  @media screen and (max-width: 1024px) {
+    font-size: calc($h3-size / 1.5);
+  }
+}
+
+h4 {
+  // @apply font-bold text-slate-800 dark:text-slate-400;
+  font-size: $h4-size;
+  font-weight: theme("fontWeight.bold");
+  color: theme("textColor.slate.800");
+
+  @media screen and (max-width: 1024px) {
+    font-size: calc($h4-size / 1.15);
+  }
+}
+
+h5 {
+  // @apply font-semibold text-slate-800 dark:text-slate-400;
+  font-size: $h5-size;
+  font-weight: theme("fontWeight.semibold");
+  // letter-spacing: theme("letterSpacing.tight");
+  color: theme("textColor.slate.800");
+
+  @media screen and (max-width: 1024px) {
+    font-size: calc($h5-size / 1.25);
+  }
+}
+
+h6 {
+  // @apply text-base font-semibold text-slate-800 dark:text-slate-400;
+  font-size: theme("fontSize.base");
+  font-weight: theme("fontWeight.semibold");
+  color: theme("textColor.slate.800");
+}
+
+:is(
+    .dark h1,
+    .dark h2,
+    .dark h3,
+    .dark h4,
+    .dark h5,
+    .dark h6,
+    .dark p,
+    .dark li,
+    .dark .caption
+  ) {
+  color: theme("textColor.slate.400");
+}
+
+.caption {
+  // @apply text-sm font-medium uppercase tracking-wider dark:text-slate-300;
+  font-size: theme("fontSize.sm");
+  font-weight: theme("fontWeight.medium");
+  text-transform: uppercase;
+  letter-spacing: theme("letterSpacing.wider");
+  color: theme("textColor.slate.800");
+  // color: color(theme("textColor.slate.700"), theme("textColor.slate.300"));
+}
+
+p,
+li {
+  // @apply text-slate-600/90 dark:text-slate-300;
+  color: theme("textColor.slate.600/90");
+}
+
+a {
+  // @apply cursor-pointer hover:text-primary;
+  cursor: theme("cursor.pointer");
+
+
+}
+
+.lead {
+  @apply dark:text-slate-300;
+  font-size: $lead-size;
+  color: theme("textColor.slate.600/90");
+  line-height: 1.8;
+
+  @media screen and (max-width: 1024px) {
+    font-size: calc($lead-size / 1.15);
+  }
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+.footer-link {
+  font-size: 0.875rem;
+}

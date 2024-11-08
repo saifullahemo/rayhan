@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "headline": "I’m the invisible hand behind everyday product you rely on",
+    "subHeaderTop": "Abu Rayhan Md Saifullah",
+    "subHeaderBottom": "Software Quality Assurance Engineer",
+    "color": "white",
+    "textColor": "white"
+
+  },
+  {
+    "id": 2,
+    "headline": "From SQA to UX/UI design - Crafting better digital experiences.",
+    "subHeaderTop": "About",
+    "subHeaderBottom": "View",
+    "color": "about",
+    "textColor": "about",
+    "link": "/about"
+  },
+  {
+    "id": 3,
+    "headline": "Beyond appearances, achieving conversions.",
+    "subHeaderTop": "Portfolio",
+    "subHeaderBottom": "View",
+    "color": "portfolio",
+    "textColor": "portfolio"
+  },
+  {
+    "id": 4,
+    "headline": "Experience the Impact of Collaboration Let's Connect!",
+    "subHeaderTop": "Contact",
+    "subHeaderBottom": "View",
+    "color": "contact",
+    "textColor": "contact"
+  }
+]
