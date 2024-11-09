@@ -1,32 +1,43 @@
-// components/Scene.js
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { ConvexGeometry } from "three/addons/geometries/ConvexGeometry.js";
 import * as BufferGeometryUtils from "three/addons/utils/BufferGeometryUtils.js";
 
-const Scene = ({ opacity }) => {
+interface SceneProps {
+  opacity: number; // Specify type here
+}
+
+const Scene: React.FC<SceneProps> = ({ opacity }) => {
   const group = useRef<THREE.Group>();
   const camera = useRef<THREE.PerspectiveCamera>();
   const scene = useRef<THREE.Scene>();
   const renderer = useRef<THREE.WebGLRenderer>();
   const controls = useRef<OrbitControls>();
-  const canvasContainer = useRef<HTMLDivElement>();
+  // const canvasContainer = useRef<HTMLDivElement>();
+  const canvasContainer = useRef<HTMLDivElement | null>(null); // Updated type
+
 
   useEffect(() => {
     const init = () => {
       scene.current = new THREE.Scene();
 
-      renderer.current = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.current = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
       renderer.current.setPixelRatio(window.devicePixelRatio);
       renderer.current.setSize(400, 400);
-      canvasContainer.current.appendChild(renderer.current.domElement);
+      canvasContainer.current?.appendChild(renderer.current.domElement);
 
       camera.current = new THREE.PerspectiveCamera(40, 1, 1, 1000);
       camera.current.position.set(15, 20, 30);
       scene.current.add(camera.current);
 
-      controls.current = new OrbitControls(camera.current, renderer.current.domElement);
+      controls.current = new OrbitControls(
+        camera.current,
+        renderer.current.domElement
+      );
       controls.current.minDistance = 20;
       controls.current.maxDistance = 50;
       controls.current.maxPolarAngle = Math.PI / 2;
@@ -47,10 +58,12 @@ const Scene = ({ opacity }) => {
       group.current = new THREE.Group();
       scene.current.add(group.current);
 
-      let dodecahedronGeometry = new THREE.DodecahedronGeometry(10);
+      let dodecahedronGeometry: THREE.BufferGeometry =
+        new THREE.DodecahedronGeometry(10);
       dodecahedronGeometry.deleteAttribute("normal");
       dodecahedronGeometry.deleteAttribute("uv");
-      dodecahedronGeometry = BufferGeometryUtils.mergeVertices(dodecahedronGeometry);
+      dodecahedronGeometry =
+        BufferGeometryUtils.mergeVertices(dodecahedronGeometry);
 
       const vertices = [];
       const positionAttribute = dodecahedronGeometry.getAttribute("position");
@@ -75,7 +88,7 @@ const Scene = ({ opacity }) => {
 
       const meshMaterial = new THREE.MeshLambertMaterial({
         color: 0xffffff,
-        opacity: 0.5,
+        opacity: opacity, // Use opacity prop here
         side: THREE.DoubleSide,
         transparent: true,
       });

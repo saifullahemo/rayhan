@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@react-three/fiber": "^8.14.4",
+    "framer-motion": "^11.11.11",
     "next": "latest",
+    "nodemailer": "^6.9.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.3.0",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "latest",
+    "@types/nodemailer": "^6.4.16",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@types/three": "^0.156.0",

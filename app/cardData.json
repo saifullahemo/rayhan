@@ -19,11 +19,13 @@
   },
   {
     "id": 3,
-    "headline": "Beyond appearances, achieving conversions.",
+    "headline": "Beyond appearances, Achieving conversions.",
     "subHeaderTop": "Portfolio",
     "subHeaderBottom": "View",
     "color": "portfolio",
-    "textColor": "portfolio"
+    "textColor": "portfolio",
+    "link": "/portfolio"
+
   },
   {
     "id": 4,
@@ -31,6 +33,7 @@
     "subHeaderTop": "Contact",
     "subHeaderBottom": "View",
     "color": "contact",
-    "textColor": "contact"
+    "textColor": "contact",
+    "link": "/contact"
   }
 ]

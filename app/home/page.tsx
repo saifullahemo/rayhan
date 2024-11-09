@@ -1,42 +1,47 @@
-// app/pages/Homepage.tsx
-"use client"; // Ensure this is a client component
+// app/pages/HomePage.tsx
+"use client";
 
-import React from 'react';
-import Card from '../components/card'; // Assuming Card is your card component
-import cardsData from '../cardData.json';
-import { useRouter } from 'next/navigation'; // Import from next/navigation
-import Three from '../components/three/threeDObject'; // Import your first 3D model
-// import ThreeModel2 from '../components/three/Model2'; // Import your second 3D model
-// import ThreeModel3 from '../components/three/Model3'; // Import your third 3D model
-// import ThreeModel4 from '../components/three/Model4'; // Import your fourth 3D model
+import React from "react";
+import { motion } from "framer-motion"; // Import motion
+import Card from "../components/card";
+import cardsData from "../cardData.json";
+import { useRouter } from "next/navigation";
+import Three from "../components/three/threeDObject";
+import Cube from "../components/three/cube";
+import Character from "../components/three/character";
 
 const HomePage: React.FC = () => {
-  const router = useRouter(); // Initialize the useRouter from next/navigation
+  const router = useRouter();
 
-  const getCardById = (id: number) => cardsData.find(card => card.id === id);
+  const getCardById = (id: number) => cardsData.find((card) => card.id === id);
 
-  // Click handler for navigating to a specific link
   const handleCardClick = (link?: string) => {
     if (link) {
-      router.push(link); // Navigate to the provided link
+      router.push(link);
     }
   };
 
   return (
     <div className="flex flex-col justify-around items-center">
-      <div className="card-container">
-        <Card cardData={getCardById(1)} className='' ThreeModel={Three} />
-      </div>
-      <div className="card-container hover:bg-opacity-10 cursor-pointer" onClick={() => handleCardClick(getCardById(2)?.link)}>
-        <Card cardData={getCardById(2)} className='' />
-        {/* <Card cardData={getCardById(2)} className='' ThreeModel={ThreeModel2} /> */}
-      </div>
-      <div className="card-container hover:bg-opacity-90 cursor-pointer">
-        <Card cardData={getCardById(3)} className=''  />
-      </div>
-      <div className="card-container hover:bg-opacity-90 cursor-pointer">
-        <Card cardData={getCardById(4)} className=''  />
-      </div>
+      {[1, 2, 3, 4].map((id) => (
+        <motion.div
+          key={id}
+          className="card-container"
+          onClick={() => handleCardClick(getCardById(id)?.link)}
+          initial={{ opacity: 0, y: 50 }} // Start below and transparent
+          animate={{ opacity: 1, y: 0 }} // Animate to visible and in position
+          transition={{ duration: 0.6, delay: id * 0.2 }} // Delay each card for a nice sequence
+        >
+          <Card
+  cardData={getCardById(id) || { id: 0, headline: "", subHeaderTop: "", subHeaderBottom: "", color: "", textColor: "", link: "" }}
+  className=""
+  ThreeModel={
+    (id === 2 ? Cube : id === 3 ? Three : id === 4 ? Character : undefined) as React.ComponentType<{ opacity: number; }> | undefined
+  }
+/>
+
+        </motion.div>
+      ))}
     </div>
   );
 };

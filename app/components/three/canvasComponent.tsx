@@ -1,14 +1,14 @@
 // Example usage in another component
 import { Canvas } from 'react-three-fiber';
 import ThreeDObject from './threeDObject';
-import Circle from './circlethree';
+// import Circle from './circlethree';
 
 const App = () => {
   return (
     <>
     <div className=''>
-      <ThreeDObject />
-      <Circle />
+      <ThreeDObject opacity={1} />
+      {/* <Circle /> */}
 
     </div>
     </>

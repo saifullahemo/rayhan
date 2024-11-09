@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "title": "Project 01",
+      "description": "An e-commerce platform specializing in the retail of readymade garments, leveraging a stocklot inventory model.",
+      "projectName": "Stockbaki",
+      "role": "SQA",
+      "projectType": "E-commerce site",
+      "imageUrl": "/images/stockbaki.png"
+    },
+    {
+      "id": 2,
+      "title": "Project 02",
+      "description": "International Trade Insights. Analyzing global trade profiles through shipment records.",
+      "projectName": "EximTel",
+      "role": "SQA",
+      "projectType": "Web Application",
+      "imageUrl": "/images/eximtel.png"
+    },
+    {
+      "id": 3,
+      "title": "Project 03",
+      "description": "The only platform needs for Monitoring, Evaluation, Research & Learning",
+      "projectName": "Merlin",
+      "role": "SQA",
+      "projectType": "Web Application",
+      "imageUrl": "/images/merlin.png"
+    },
+    {
+      "id": 4,
+      "title": "Project 04",
+      "description": "Elevate Learning Experiences with this Innovative eLearning Management System: Streamline Education, Empower Learners, and Drive Success.",
+      "projectName": "Lattitude",
+      "role": "SQA",
+      "projectType": "Web Application",
+      "imageUrl": "/images/lattitude.png"
+    }
+  ]
+  
