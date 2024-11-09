@@ -15,7 +15,9 @@ interface CardProps {
   className?: string;
   onClick?: () => void;
   ThreeModel?: React.ComponentType<{ opacity: number }>;
+  opacity?: number; // <-- Add this line
 }
+
 
 const Card: React.FC<CardProps> = ({ cardData, className, onClick, ThreeModel }) => {
   const [isHovered, setIsHovered] = useState(false);
