@@ -15,9 +15,8 @@ interface CardProps {
   className?: string;
   onClick?: () => void;
   ThreeModel?: React.ComponentType<{ opacity: number }>;
-  opacity?: number; // <-- Add this line
+  opacity?: number;
 }
-
 
 const Card: React.FC<CardProps> = ({ cardData, className, onClick, ThreeModel }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -46,14 +45,15 @@ const Card: React.FC<CardProps> = ({ cardData, className, onClick, ThreeModel })
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -10, boxShadow: "0px 15px 25px rgba(0, 0, 0, 0.2)" }}
     >
-      <div className="flex justify-center">
+      <div className="flex justify-center relative">
         <motion.div
           className="absolute top-0"
           initial={{ opacity: 1 }}
-          animate={{ opacity: isHovered ? 1 : 1 }} // Ensure opacity stays 1 by default
+          animate={{ opacity: isHovered ? 1 : isMobile ? 0.5 : 1 }} // Opacity based on mobile and hover state
           transition={{ duration: 0.3 }}
+          style={{ zIndex: isMobile ? -1 : 1 }} // Set zIndex to be behind text on mobile
         >
-          {ThreeModel && <ThreeModel opacity={isHovered ? 0.2 : 1} />} {/* Set initial opacity to 1 */}
+          {ThreeModel && <ThreeModel opacity={isHovered ? 0.2 : 1} />} {/* Set opacity of 3D model */}
         </motion.div>
       </div>
 
