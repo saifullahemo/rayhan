@@ -1,7 +1,6 @@
-// app/pages/HomePage.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion"; // Import motion
 import Card from "../components/card";
 import cardsData from "../cardData.json";
@@ -12,6 +11,7 @@ import Character from "../components/three/character";
 
 const HomePage: React.FC = () => {
   const router = useRouter();
+  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
   const getCardById = (id: number) => cardsData.find((card) => card.id === id);
 
@@ -28,18 +28,40 @@ const HomePage: React.FC = () => {
           key={id}
           className="card-container"
           onClick={() => handleCardClick(getCardById(id)?.link)}
+          onMouseEnter={() => setHoveredCardId(id)}
+          onMouseLeave={() => setHoveredCardId(null)}
           initial={{ opacity: 0, y: 50 }} // Start below and transparent
           animate={{ opacity: 1, y: 0 }} // Animate to visible and in position
           transition={{ duration: 0.6, delay: id * 0.2 }} // Delay each card for a nice sequence
         >
           <Card
-  cardData={getCardById(id) || { id: 0, headline: "", subHeaderTop: "", subHeaderBottom: "", color: "", textColor: "", link: "" }}
-  className=""
-  ThreeModel={
-    (id === 2 ? Cube : id === 3 ? Three : id === 4 ? Character : undefined) as React.ComponentType<{ opacity: number; }> | undefined
-  }
-/>
-
+            cardData={
+              getCardById(id) || {
+                id: 0,
+                headline: "",
+                subHeaderTop: "",
+                subHeaderBottom: "",
+                color: "",
+                textColor: "",
+                link: "",
+              }
+            }
+            className=""
+            ThreeModel={
+              (id === 2
+                ? Cube
+                : id === 3
+                ? Three
+                : id === 4
+                ? Character
+                : undefined) as
+                | React.ComponentType<{ opacity: number }>
+                | undefined
+            }
+            onClick={() => handleCardClick(getCardById(id)?.link)}
+            // Pass opacity based on hovered state
+            opacity={hoveredCardId === id ? 0.2 : 1}
+          />
         </motion.div>
       ))}
     </div>

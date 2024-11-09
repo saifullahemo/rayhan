@@ -39,7 +39,7 @@ const Nav: React.FC = () => {
               <Link href="/portfolio" onClick={closeMenu} className="text-3xl hover:text-gray-300">Portfolio</Link>
               <Link href="/contact" onClick={closeMenu} className="text-3xl hover:text-gray-300">Contact</Link>
             </div>
-            <div className="p-8 w-full">
+            {/* <div className="p-8 w-full">
               <form className="max-w-md mx-auto space-y-4">
                 <div>
                   <input type="text" placeholder="Name" className="w-full p-4 text-xs bg-gray-200/10 text-white rounded" />
@@ -52,7 +52,7 @@ const Nav: React.FC = () => {
                 </div>
                 <button type="submit" className="w-full p-4 bg-sky-950/60 text-white/80 font-bold hover:bg-sky-900/60 rounded">Send</button>
               </form>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

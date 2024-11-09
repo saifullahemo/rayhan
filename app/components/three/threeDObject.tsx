@@ -21,7 +21,7 @@ const Scene: React.FC<SceneProps> = ({ opacity }) => {
   useEffect(() => {
     const init = () => {
       scene.current = new THREE.Scene();
-
+  
       renderer.current = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true,
@@ -29,11 +29,11 @@ const Scene: React.FC<SceneProps> = ({ opacity }) => {
       renderer.current.setPixelRatio(window.devicePixelRatio);
       renderer.current.setSize(400, 400);
       canvasContainer.current?.appendChild(renderer.current.domElement);
-
+  
       camera.current = new THREE.PerspectiveCamera(40, 1, 1, 1000);
       camera.current.position.set(15, 20, 30);
       scene.current.add(camera.current);
-
+  
       controls.current = new OrbitControls(
         camera.current,
         renderer.current.domElement
@@ -45,62 +45,65 @@ const Scene: React.FC<SceneProps> = ({ opacity }) => {
       controls.current.dampingFactor = 0.25;
       controls.current.screenSpacePanning = false;
       controls.current.maxPolarAngle = Math.PI / 2;
-
+  
+      // Disable zoom on scroll
+      controls.current.enableZoom = false;
+  
       scene.current.add(new THREE.AmbientLight(0x666666));
-
+  
       const light = new THREE.PointLight(0xffffff, 3, 0, 0);
       camera.current.add(light);
-
+  
       const loader = new THREE.TextureLoader();
       const texture = loader.load("/texture/disc.png");
       texture.encoding = THREE.sRGBEncoding;
-
+  
       group.current = new THREE.Group();
       scene.current.add(group.current);
-
+  
       let dodecahedronGeometry: THREE.BufferGeometry =
         new THREE.DodecahedronGeometry(10);
       dodecahedronGeometry.deleteAttribute("normal");
       dodecahedronGeometry.deleteAttribute("uv");
       dodecahedronGeometry =
         BufferGeometryUtils.mergeVertices(dodecahedronGeometry);
-
+  
       const vertices = [];
       const positionAttribute = dodecahedronGeometry.getAttribute("position");
-
+  
       for (let i = 0; i < positionAttribute.count; i++) {
         const vertex = new THREE.Vector3();
         vertex.fromBufferAttribute(positionAttribute, i);
         vertices.push(vertex);
       }
-
+  
       const pointsMaterial = new THREE.PointsMaterial({
         color: 0x666666,
         map: texture,
         size: 0,
         alphaTest: 0.5,
       });
-
+  
       const pointsGeometry = new THREE.BufferGeometry().setFromPoints(vertices);
-
+  
       const points = new THREE.Points(pointsGeometry, pointsMaterial);
       group.current.add(points);
-
+  
       const meshMaterial = new THREE.MeshLambertMaterial({
         color: 0xffffff,
         opacity: opacity, // Use opacity prop here
         side: THREE.DoubleSide,
         transparent: true,
       });
-
+  
       const meshGeometry = new ConvexGeometry(vertices);
-
+  
       const mesh = new THREE.Mesh(meshGeometry, meshMaterial);
       group.current.add(mesh);
-
+  
       window.addEventListener("resize", onWindowResize);
     };
-
+  
     const onWindowResize = () => {
       if (camera.current) {
         camera.current.aspect = 1;
@@ -110,7 +113,7 @@ const Scene: React.FC<SceneProps> = ({ opacity }) => {
         renderer.current.setSize(400, 400);
       }
     };
-
+  
     const animate = () => {
       requestAnimationFrame(animate);
       if (group.current) {
@@ -118,16 +121,16 @@ const Scene: React.FC<SceneProps> = ({ opacity }) => {
       }
       render();
     };
-
+  
     const render = () => {
       if (renderer.current && scene.current && camera.current) {
         renderer.current.render(scene.current, camera.current);
       }
     };
-
+  
     init();
     animate();
-
+  
     return () => {
       window.removeEventListener("resize", onWindowResize);
       if (canvasContainer.current && renderer.current) {
@@ -135,6 +138,7 @@ const Scene: React.FC<SceneProps> = ({ opacity }) => {
       }
     };
   }, [opacity]);
+  
 
   return <div id="canvas-container" ref={canvasContainer}></div>;
 };

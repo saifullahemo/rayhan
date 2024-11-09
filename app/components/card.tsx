@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "../color.module.css";
-import Three from "./three/threeDObject";
 import { motion } from "framer-motion";
 
 interface CardProps {
@@ -49,10 +48,10 @@ const Card: React.FC<CardProps> = ({ cardData, className, onClick, ThreeModel })
         <motion.div
           className="absolute top-0"
           initial={{ opacity: 1 }}
-          animate={{ opacity: isHovered ? 1 : 1 }}
+          animate={{ opacity: isHovered ? 1 : 1 }} // Ensure opacity stays 1 by default
           transition={{ duration: 0.3 }}
         >
-          {ThreeModel && <ThreeModel opacity={isHovered ? 1 : 0} />}
+          {ThreeModel && <ThreeModel opacity={isHovered ? 0.2 : 1} />} {/* Set initial opacity to 1 */}
         </motion.div>
       </div>
 

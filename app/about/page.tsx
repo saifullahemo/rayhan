@@ -45,7 +45,7 @@ const About: React.FC = () => {
           animate={{ opacity: 0.5, scale: 1 }}
           transition={{ duration: 3.5, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
         >
-          <Cube rotationSpeedX={-0.001} rotationSpeedY={-0.005} scale={1.0} />
+          <Cube rotationSpeedX={-0.001} rotationSpeedY={-0.007} scale={1.0} />
         </motion.div>
         <motion.div
           className="mt-32 mx-4"
@@ -53,7 +53,7 @@ const About: React.FC = () => {
           animate={{ opacity: 1, scale: 1.2 }}
           transition={{ duration: 3.8, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
         >
-          <Cube rotationSpeedX={0.015} rotationSpeedY={0.005} scale={1.2} />
+          <Cube rotationSpeedX={0.005} rotationSpeedY={0.005} scale={1.0} />
         </motion.div>
         <motion.div
           className="opacity-50 ml-4 mb-20"
@@ -61,7 +61,7 @@ const About: React.FC = () => {
           animate={{ opacity: 0.5, scale: 1 }}
           transition={{ duration: 3.6, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
         >
-          <Cube rotationSpeedX={0.001} rotationSpeedY={-0.015} scale={1.0} />
+          <Cube rotationSpeedX={0.002} rotationSpeedY={-0.002} scale={8.0} />
         </motion.div>
       </div>
 
