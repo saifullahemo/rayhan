@@ -44,6 +44,13 @@ const Card: React.FC<CardProps> = ({ cardData, className, onClick, ThreeModel })
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -10, boxShadow: "0px 15px 25px rgba(0, 0, 0, 0.2)" }}
+      style={{
+        backgroundImage: `linear-gradient(135deg, #fffff 0%, #fffff 40%, #fffff 100%)`, // Gradient with a light coral accent
+        backgroundSize: "cover",
+        // borderColor: isHovered ? "#FFD700" : "transparent", // Gold accent border on hover
+        borderWidth: "2px",
+        transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+      }}
     >
       <div className="flex justify-center relative">
         <motion.div

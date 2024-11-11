@@ -4,25 +4,18 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import Nav from "../components/nav";
 import Character from '../components/three/character';
+import {BackgroundDots, FloatingParticles} from "../portfolio/BackgroundElements";
+import {ScrollProgress} from "../portfolio/ScrollElements";
+import {SocialLinks} from "../portfolio/SocialLinks";
 
 const Contact: React.FC = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
 
-  const handleMouseMove = (e: MouseEvent) => {
-    setPosition({ x: e.clientX / 20, y: e.clientY / 20 });
-  };
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
-    setFormData(prev => ({ ...prev, [id as keyof typeof formData]: value })); // Type assertion here
+    setFormData(prev => ({ ...prev, [id]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,12 +45,19 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#001F3F] pt-4 relative min-h-screen">
+    <div className="bg-gradient-to-b from-[#001F3F] to-[#002C4F] pt-4 relative min-h-screen">
+      <BackgroundDots />
+      <FloatingParticles />
       <Nav />
-      
+      <ScrollProgress />
+      <SocialLinks />
+
+      {/* Character with smooth animation */}
       <motion.div
-        style={{ translateX: position.x, translateY: position.y, position: "absolute", transform: "translate(-50%, -50%)" }}
-        className="z-0 sm:top-1/2 sm:left-1/2 md:top-20 md:left-[30%]"
+        className="z-0 sm:top-1/2 sm:left-1/2 md:top-20 md:left-[30%] absolute"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
       >
         <Character />
       </motion.div>

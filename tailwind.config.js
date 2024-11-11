@@ -7,7 +7,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",  // if you have src folder
   ],
   theme: {
-    extend: {},
+    extend: {
+        boxShadow: {
+          glow: '0 4px 15px rgba(0, 255, 255, 0.6)', // Customize the color and intensity
+        },
+    },
   },
   plugins: [],
 };

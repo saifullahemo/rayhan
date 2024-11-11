@@ -35,14 +35,15 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ title, skills }) => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
+            whileHover={{ scale: 1.1, opacity: 1 }}
           >
-            <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-4">
+            <div className="w-20 h-20 rounded-full opacity-70 hover:opacity-100 bg-white/10 flex items-center justify-center mb-4 transition-transform">
               <Image
                 src={skill.icon}
                 alt={`${skill.name} Icon`}
                 width={40}
                 height={40}
-                className="opacity-70"
+                className=" transition-opacity duration-200 ease-in-out "
               />
             </div>
             <div className="text-white/80 text-xs font-normal w-24 text-center">{skill.name}</div>

@@ -4,7 +4,7 @@ import Homepage from './home/page'
 
 const SectionPage: React.FC = () => {
   return (
-    <section className="max-w-6xl mx-auto my-24 p-16">
+    <section className="max-w-6xl mx-auto space-y-20 mt-24">
       <Homepage />
     </section>
   );

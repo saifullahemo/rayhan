@@ -30,7 +30,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, reverse }) => {
     <motion.div
       className={`flex flex-col ${
         reverse ? "md:flex-row-reverse" : "md:flex-row"
-      } items-center text-white mx-auto text-left p-6 md:p-10 w-full md:w-[80vw] lg:w-[70vw] relative overflow-hidden`}
+      } items-center text-white mx-auto text-left p-6 md:p-10 w-full md:w-[80vw] lg:w-[60vw] relative overflow-hidden`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

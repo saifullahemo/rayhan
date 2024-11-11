@@ -37,9 +37,7 @@ const MySkills: React.FC = () => {
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       {/* Set a consistent max width for both sections */}
-      <div className="max-w-6xl mx-auto">
-        <SkillsSection title="Skills as a SQA Engineer" skills={sqaSkills} />
-      </div>
+     
       
       {/* Cube animations */}
       <div className="absolute inset-0 flex justify-center items-center space-x-24 space-y-12">
@@ -70,7 +68,9 @@ const MySkills: React.FC = () => {
           <Cube rotationSpeedX={-0.01} rotationSpeedY={-0.002} scale={0.80} />
         </motion.div>
       </div>
-
+ <div className="max-w-6xl mx-auto">
+        <SkillsSection title="Skills as a SQA Engineer" skills={sqaSkills} />
+      </div>
       <div className="max-w-6xl mx-auto">
         <SkillsSection title="Skills as a Web Developer" skills={developerSkills} />
       </div>
