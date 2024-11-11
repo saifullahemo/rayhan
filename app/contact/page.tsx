@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#001F3F] to-[#002C4F] pt-4 relative min-h-screen">
+    <div className="bg-gradient-to-b text-white from-[#001F3F] to-[#002C4F] pt-4 relative min-h-screen">
       <BackgroundDots />
       <FloatingParticles />
       <Nav />
@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
               Experience the Impact of Collaboration
             </p>
             <h1 className="text-4xl md:text-5xl text-white font-normal">Let's Connect!</h1>
-            <div className="space-y-8">
+            <div className="space-y-8 ">
               {[{ href: "https://github.com/saifullahemo", Icon: FaGithub, label: "GitHub" },
                 { href: "https://linkedin.com/in/saifullahemo", Icon: FaLinkedin, label: "LinkedIn" },
                 { href: "mailto:saifullahemo@gmail.com", Icon: FaEnvelope, label: "Email" }
