@@ -2,6 +2,12 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Three from '../components/three/threeDObject';
 
+// Define the ParallaxThreeProps interface
+interface ParallaxThreeProps {
+  opacity: number;
+  speed?: number;
+}
+
 export const ParallaxThree: React.FC<ParallaxThreeProps> = ({ opacity, speed = 1 }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({

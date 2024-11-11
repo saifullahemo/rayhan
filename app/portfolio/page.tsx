@@ -22,7 +22,7 @@ const glowAnimationVariants = {
 };
 
 // Scroll Indicator Component with unmount logic
-const ScrollIndicator = ({ setIndicatorVisible }) => {
+const ScrollIndicator = ({ setIndicatorVisible }: { setIndicatorVisible: (visible: boolean) => void }) => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -56,6 +56,7 @@ const ScrollIndicator = ({ setIndicatorVisible }) => {
     </motion.div>
   );
 };
+
 
 const Portfolio: React.FC = () => {
   const mainRef = useRef<HTMLElement>(null);
