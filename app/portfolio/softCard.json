@@ -1,39 +1,271 @@
 [
-    {
-      "id": 1,
-      "title": "Project 01",
-      "description": "An e-commerce platform specializing in the retail of readymade garments, leveraging a stocklot inventory model.",
-      "projectName": "Stockbaki",
-      "role": "SQA",
-      "projectType": "E-commerce site",
-      "imageUrl": "/images/stockbaki.png"
-    },
-    {
-      "id": 2,
-      "title": "Project 02",
-      "description": "International Trade Insights. Analyzing global trade profiles through shipment records.",
-      "projectName": "EximTel",
-      "role": "SQA",
-      "projectType": "Web Application",
-      "imageUrl": "/images/eximtel.png"
-    },
-    {
-      "id": 3,
-      "title": "Project 03",
-      "description": "The only platform needs for Monitoring, Evaluation, Research & Learning",
-      "projectName": "Merlin",
-      "role": "SQA",
-      "projectType": "Web Application",
-      "imageUrl": "/images/merlin.png"
-    },
-    {
-      "id": 4,
-      "title": "Project 04",
-      "description": "Elevate Learning Experiences with this Innovative eLearning Management System: Streamline Education, Empower Learners, and Drive Success.",
-      "projectName": "Lattitude",
-      "role": "SQA",
-      "projectType": "Web Application",
-      "imageUrl": "/images/lattitude.png"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "title": "Project 01",
+    "description": "An e-commerce platform specializing in the retail of readymade garments, leveraging a stocklot inventory model.",
+    "projectName": "Stockbaki",
+    "role": ["SQA Engineer", "UI/UX Consultant"],
+    "projectType": "E-commerce Platform",
+    "imageUrl": "/images/stockbaki.png",
+    "responsibilities": [
+      "Designed and implemented comprehensive test strategies for the e-commerce platform",
+      "Conducted usability testing and gathered user feedback",
+      "Implemented automated testing suite using Cypress",
+      "Optimized checkout flow reducing cart abandonment by 25%"
+    ],
+    "tools": [
+      "Manual Testing",
+      "Automation Testing",
+      "API Testing",
+      "Performance Testing",
+      "JIRA",
+      "Cypress",
+      "Jest"
+    ],
+    "metrics": [
+      {
+        "label": "Bug Detection Rate",
+        "value": "95%"
+      },
+      {
+        "label": "User Satisfaction",
+        "value": "4.5/5"
+      },
+      {
+        "label": "Test Coverage",
+        "value": "90%"
+      }
+    ],
+    "duration": "8 months",
+    "status": "Completed"
+  },
+  {
+    "id": 2,
+    "title": "Project 02",
+    "description": "International Trade Insights platform analyzing global trade profiles through shipment records.",
+    "projectName": "EximTel",
+    "role": ["SQA Engineer"],
+    "projectType": "Web Application",
+    "imageUrl": "/images/eximtel.png",
+    "responsibilities": [
+      "Led end-to-end testing strategy for complex data visualization features",
+      "Conducted user research and usability studies for dashboard design",
+      "Implemented automated API testing framework",
+      "Created user journey maps and interaction patterns",
+      "Reduced system response time by 40% through performance testing"
+    ],
+    "tools": [
+      "Manual Testing",
+      "API Testing",
+      "Database Testing",
+      "JIRA"
+    ],
+    "metrics": [
+      {
+        "label": "Performance Improvement",
+        "value": "40%"
+      },
+      {
+        "label": "User Retention",
+        "value": "+45%"
+      }
+    ],
+    "duration": "12 months",
+    "status": "Completed"
+  },
+  {
+    "id": 3,
+    "title": "Project 03",
+    "description": "Comprehensive platform for Monitoring, Evaluation, Research & Learning with focus on data visualization.",
+    "projectName": "Merlin",
+    "role": ["SQA Engineer"],
+    "projectType": "Web Application",
+    "imageUrl": "/images/merlin.png",
+    "responsibilities": [
+      "Developed automated test scripts for complex data visualization components",
+      "Designed intuitive dashboards and report interfaces",
+      "Implemented accessibility testing protocols",
+      "Created style guide and component library",
+      "Reduced bug report time by 60% through streamlined processes"
+    ],
+    "tools": [
+      "Manual Testing",
+      "Automation Testing",
+      "API Testing",
+      "Performance Testing",
+      "Database Testing",
+      "JIRA",
+      "Cypress",
+      "Jest"
+    ],
+    "metrics": [
+      {
+        "label": "Accessibility Score",
+        "value": "98%"
+      },
+      {
+        "label": "Bug Resolution",
+        "value": "-90%"
+      },
+      {
+        "label": "Design System Adoption",
+        "value": "100%"
+      }
+    ],
+    "duration": "10 months",
+    "status": "Completed"
+  },
+  {
+    "id": 4,
+    "title": "Project 04",
+    "description": "Innovative eLearning Management System focused on streamlining education and empowering learners.",
+    "projectName": "Lattitude",
+    "role": ["SQA Engineer"],
+    "projectType": "eLearning Platform",
+    "imageUrl": "/images/lattitude.png",
+    "responsibilities": [
+      "Architected the platform's user experience strategy",
+      "Implemented comprehensive testing framework for learning modules",
+      "Designed adaptive learning interfaces",
+      "Led usability testing sessions with educators and students",
+      "Improved learning completion rates by 35% through UX improvements"
+    ],
+    "tools": [
+      "Manual Testing",
+      "API Testing",
+      "Performance Testing",
+      "JIRA"
+    ],
+    "metrics": [
+
+      {
+        "label": "System Uptime",
+        "value": "99.9%"
+      },
+      {
+        "label": "User Engagement",
+        "value": "+65%"
+      }
+    ],
+    "duration": "14 months",
+    "status": "Maintenance"
+  },
+  {
+    "id": 5,
+    "title": "Project 05",
+    "description": "Modern Human Resource Management System (HRMS) with focus on employee management, attendance tracking, and intuitive user experience.",
+    "projectName": "HRMS",
+    "role": ["UI/UX Designer"],
+    "projectType": "Enterprise Software",
+    "imageUrl": "/images/hrms.png",
+    "responsibilities": [
+      "Conducted extensive user interviews with HR professionals to understand workflow requirements",
+      "Created user personas and journey maps for different HR roles (HR Manager, Admin, Employee)",
+      "Developed information architecture and user flows for complex HR processes",
+      "Designed wireframes and interactive prototypes for key features including employee onboarding"
+    ],
+    "tools": [
+      "Figma"
+    ],
+    "metrics": [
+      {
+        "label": "Task Completion Rate",
+        "value": "90%"
+      },
+      {
+        "label": "User Satisfaction",
+        "value": "4.2/5"
+      },
+      {
+        "label": "Time Saved on HR Tasks",
+        "value": "40%"
+      }
+    ],
+    "duration": "6 months",
+    "status": "Ongoing",
+    "keyFeatures": [
+      "Conducted extensive user interviews with HR professionals to understand workflow requirements",
+      "Employee list view with quick action buttons",
+      "Comprehensive employee profile management",
+      "Intuitive navigation system",
+      "Attendance tracking dashboard",
+      "Employee onboarding workflow"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Project 06",
+    "description": "Modern website design for a software development company featuring dark mode aesthetics, abstract technological elements, and intuitive navigation system.",
+    "projectName": "JMC Tech",
+    "role": ["UI/UX Designer"],
+    "projectType": "Corporate Website",
+    "imageUrl": "/images/dev.png",
+    "responsibilities": [
+      "Designed modern dark-themed interface with technology-focused visual elements",
+      "Developed comprehensive design system including typography, color palette, and spacing rules",
+      "Conducted competitive analysis to identify best practices"
+    ],
+    "tools": [
+      "Figma",
+      "Photoshop"
+    ],
+    "metrics": [
+      {
+        "label": "Design System Adoption",
+        "value": "100%"
+      },
+      {
+        "label": "User Engagement",
+        "value": "+35%"
+      }
+    ],
+    "duration": "3 months",
+    "status": "Completed",
+    "keyFeatures": [
+      "Dark mode aesthetic with teal accents",
+      "Abstract digital art hero section",
+      "Responsive grid layouts",
+      "Modern typography system"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Project 07",
+    "description": "A premium real estate platform designed to showcase luxury properties with an elegant, modern interface focused on visual storytelling and seamless property exploration.",
+    "projectName": "JMC Asset Management",
+    "role": ["UI/UX Designer"],
+    "projectType": "Real Estate Platform",
+    "imageUrl": "/images/jmc-asset-1.png",
+    "responsibilities": [
+      "Conducted user research and competitive analysis of real estate platforms",
+      "Created user flows and wireframes for property search and inquiry processes",
+      "Designed modern UI components including property cards, sliders, and detail pages",
+      "Implemented responsive design ensuring optimal viewing across all devices"
+    ],
+    "tools": [
+      "Figma",
+      "Photoshop"
+    ],
+    "metrics": [
+      {
+        "label": "User Engagement",
+        "value": "+45%"
+      },
+      {
+        "label": "Property Inquiry Rate",
+        "value": "+60%"
+      }
+    ],
+    "duration": "4 months",
+    "status": "Completed",
+    "keyFeatures": [
+      "Modern hero section with property slider",
+      "Featured properties carousel",
+      "Property cards with price and details",
+      "Video showcase section",
+      "About Us section with vision and mission",
+      "Responsive navigation system",
+      "Footer with company information and contacts"
+    ]
+  }
+]

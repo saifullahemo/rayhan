@@ -15,7 +15,7 @@ const Nav: React.FC = () => {
 
   return (
     <>
-      <nav className="max-w-6xl mx-auto flex justify-between items-center p-4 bg-transparent text-white/90">
+      <nav className="max-w-6xl  mx-auto flex justify-between items-center p-4 bg-transparent text-white/90">
         <div className="text-xl font-bold">
           <Link href="/">Rayhan</Link>
         </div>
@@ -33,7 +33,7 @@ const Nav: React.FC = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="fixed inset-0 bg-[#001326]/90 text-white z-40 md:hidden">
-          <div className="h-full max-w-6xl w-full items-center mx-auto grid grid-cols-1 gap-8 p-8">
+          <div className="h-full max-w-6xl w-full items-start mx-auto grid mt-40 grid-cols-1 gap-8 p-8">
             <div className="flex flex-col justify-center items-start space-y-8">
               <Link href="/about" onClick={closeMenu} className="text-3xl hover:text-gray-300">About</Link>
               <Link href="/portfolio" onClick={closeMenu} className="text-3xl hover:text-gray-300">Portfolio</Link>

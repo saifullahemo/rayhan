@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 
 export const SocialLinks = () => (
   <motion.div 
-    className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-50"
+    className="fixed right-12 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-50"
     initial={{ opacity: 0, x: 50 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ delay: 1 }}

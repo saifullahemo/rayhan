@@ -8,6 +8,8 @@ const software = [
   { name: 'Jira', icon: '/icon/jira.svg' },
   { name: 'GitLab CI/CD', icon: '/icon/gitlab.svg' },
   { name: 'JMeter', icon: '/icon/jmeter.svg' },
+  // { name: 'Loadrunner', icon: '/icon/jmeter.svg' },
+  { name: 'Jenkins', icon: '/icon/jenkins.svg' },
   { name: 'Postman', icon: '/icon/postman.svg' },
   { name: 'Android Studio', icon: '/icon/android.svg' },
   { name: 'OWASP ZAP', icon: '/icon/zap.svg' },

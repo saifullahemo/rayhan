@@ -154,7 +154,7 @@ const Portfolio: React.FC = () => {
         {/* Rest of the code remains the same... */}
         {/* Software Section */}
         <motion.div
-          className="mt relative z-10 rounded-xl p-8 mx-auto max-w-6xl"
+          className="mt relative z-10 rounded-xl p-8 mx-auto max-w-7xl"
           variants={fadeInUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -192,7 +192,7 @@ const Portfolio: React.FC = () => {
 
         {/* Projects Section */}
         <motion.div
-          className="mt-32 relative z-10 rounded-xl p-8 mx-auto max-w-6xl"
+          className="mt-32 relative z-10 rounded-xl p-8 mx-auto max-w-7xl"
           variants={fadeInUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -229,7 +229,7 @@ const Portfolio: React.FC = () => {
 
         {/* Contact Section */}
         <motion.div
-          className="mt-32 relative z-10 rounded-xl p-8 mx-auto max-w-6xl text-center"
+          className="mt-32 relative z-10 rounded-xl p-8 mx-auto max-w-7xl text-center"
           variants={fadeInUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -244,7 +244,7 @@ const Portfolio: React.FC = () => {
               Let's Connect
             </h2>
             
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+            <p className="text-lg font-normal text-white/60 max-w-3xl mx-auto">
               Whether you have a project in mind or just want to chat about 
               technology, I'm always open to new connections and opportunities.
             </p>

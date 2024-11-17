@@ -78,7 +78,7 @@ scene.add(directionalLight);
   }, [rotationSpeedX, rotationSpeedY, scale]);
 
   return (
-    <div ref={mountRef} style={{ width: '500px', height: '500px' }} />
+    <div ref={mountRef} style={{ width: '400px', height: '400px' }} />
   );
 };
 
