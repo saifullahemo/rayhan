@@ -10,9 +10,38 @@ body {
   font-weight: 400;
   font-display: swap;
   line-height: 1.75;
-
+  background-color: white;
 }
 nav {
   position: relative;
   z-index: 50; /* Increase this number if needed */
+}
+
+.node-base {
+  backdrop-filter: blur(6px);
+  transition: backdrop-filter 0.3s ease;
+}
+.node-base:hover {
+  backdrop-filter: blur(2px);
+}
+
+@keyframes fogMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-fog-move {
+  animation: fogMove 60s linear infinite;
+}
+
+#fluidCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
