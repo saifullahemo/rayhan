@@ -1,181 +1,131 @@
-"use client";
+import Image from "next/image";
+import { CheckCircle2 } from "lucide-react";
+import Nav from "../components/nav";
 
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Nav from '../components/nav';
-import Cube from '../components/three/cube';
-import MySkills from '../components/myskills';
-import { ScrollProgress } from '../portfolio/ScrollElements';
-import { SocialLinks } from '../portfolio/SocialLinks';
-import { BackgroundDots, FloatingParticles } from '../portfolio/BackgroundElements';
+const sqaSkills = [
+  "Manual testing",
+  "Automation testing",
+  "API testing",
+  "Performance testing",
+  "Mobile testing",
+  "Bug tracking",
+  "Agile delivery",
+  "Test case design",
+];
 
-const fadeInUpVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-};
+const uxSkills = [
+  "UI review",
+  "Wireframing",
+  "Prototyping",
+  "User journey mapping",
+  "Responsive design",
+  "Design systems",
+  "Usability testing",
+  "Visual design",
+];
 
-const glowAnimationVariants = {
-  animate: {
-    opacity: [0.3, 0.6, 0.3],
-    scale: [0.9, 1.1, 0.9],
-  },
-};
+const tools = ["Cypress", "Jira", "Postman", "JMeter", "Figma", "GitLab CI/CD", "Jenkins", "Chrome DevTools"];
 
-const About: React.FC = () => {
-  const mainRef = useRef<HTMLDivElement>(null);
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const { scrollYProgress } = useScroll();
-  
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!hasScrolled && window.scrollY > 100) {
-        setHasScrolled(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasScrolled]);
-
+export default function About() {
   return (
-    <main 
-      ref={mainRef}
-      className="min-h-screen w-full relative text-white"
-      style={{
-        background: `linear-gradient(145deg, 
-          #009999 0%, 
-          #005454 50%, 
-           
-          #001A1A 100%)`,
-      }}
-    >
-      {/* Wrapper for all content to prevent overflow */}
-      <div className="relative w-full pb-4">
-        {/* Background Elements */}
-        <BackgroundDots />
-        <FloatingParticles />
-        
-        {/* Decorative gradient line */}
-        <motion.div 
-          className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent"
-          style={{ top: '20%' }}
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1.5, ease: 'easeInOut' }}
-        />
+    <main className="min-h-screen bg-slate-50 text-slate-950">
+      <Nav />
 
-        {/* Navigation and UI Elements */}
-        <Nav />
-        <ScrollProgress />
-        <SocialLinks />
-
-        {/* Hero Section */}
-        <motion.div
-          className="mt-40 relative z-10 text-center"
-          style={{ opacity: heroOpacity, scale: heroScale }}
-        >
-          <motion.div
-            className="relative inline-block"
-            variants={fadeInUpVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            <motion.div
-              className="absolute -inset-4 blur-xl"
-              variants={glowAnimationVariants}
-              animate="animate"
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-              }}
-            />
-            <h1 className="text-white/90 mb-8 relative">
-              From UI/UX Design To SQA
-            </h1>
-          </motion.div>
-
-          <motion.h2
-            className="text-white/80 text-3xl font-medium max-w-3xl mx-auto leading-12 relative"
-            variants={fadeInUpVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
-          >
-            Crafting Better Digital Experiences
-          </motion.h2>
-        </motion.div>
-
-        {/* Animated Cube Background */}
-        <div className="absolute top-32 left-0 w-full flex justify-center items-center z-0">
-          <motion.div
-            className="opacity-50 mr-4 mb-10"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.5, scale: 1 }}
-            transition={{ duration: 3.5, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
-          >
-            <div className="relative">
-              <motion.div
-                className="absolute inset-0 bg-cyan-400/10 blur-xl"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.6, 0.3]
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              />
-              <Cube rotationSpeedX={-0.001} rotationSpeedY={-0.007} scale={1.0} />
-            </div>
-          </motion.div>
+      <section className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-24">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-normal text-emerald-700">About</p>
+          <h1 className="mt-3 text-4xl font-semibold leading-tight tracking-normal text-slate-950 md:text-6xl">
+            QA discipline with a designer’s eye.
+          </h1>
         </div>
 
-        {/* Skills Section */}
-        <motion.div
-          className="mt-[20rem] relative z-10 rounded-xl p-8 mx-auto max-w-6xl"
-          variants={fadeInUpVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          {/* Glassmorphism layers */}
-          <div className="absolute inset-0 bg-white/5 backdrop-blur-lg rounded-xl" />
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent rounded-xl" />
-          
-          <motion.div className="relative text-center">
-            <motion.div
-              className="relative inline-block mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              <motion.span
-                className="absolute -inset-1 blur-lg bg-gradient-to-r from-cyan-400/20 via-teal-400/20 to-cyan-400/20"
-                variants={glowAnimationVariants}
-                animate="animate"
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: 'reverse'
-                }}
-              />
-              <h6 className="text-white/80 font-normal relative">
-                Skills at a Glance
-              </h6>
-            </motion.div>
-            <MySkills />
-          </motion.div>
-        </motion.div>
-        <footer className="py-4 text-center border-t border-white/10 mt-32">
-          <p className="text-white/50 text-sm">
-            © {new Date().getFullYear()} Abu Rayhan. All rights reserved.
+        <div className="space-y-6 text-lg leading-8 text-slate-700">
+          <p>
+            I work across software quality assurance and UI/UX, which means I care about both sides of a product:
+            whether it works reliably and whether people can use it without friction.
           </p>
-        </footer>
-      </div>
+          <p>
+            My strongest work happens where risk, usability, and delivery speed meet. I can plan test coverage,
+            validate complex flows, communicate bugs clearly, and help teams improve the product experience before
+            issues reach users.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-y border-slate-200 bg-white">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-3 lg:px-8">
+          {[
+            ["Quality first", "I look for the flows, edge cases, and product risks that matter most to real users."],
+            ["Clear communication", "I report issues with context, reproduction steps, expected behavior, and impact."],
+            ["Practical improvement", "I focus on improvements teams can actually ship, maintain, and measure."],
+          ].map(([title, body]) => (
+            <article key={title} className="rounded-lg border border-slate-200 p-6">
+              <CheckCircle2 className="h-6 w-6 text-emerald-700" />
+              <h2 className="mt-5 text-xl font-semibold tracking-normal text-slate-950">{title}</h2>
+              <p className="mt-3 text-base leading-7 text-slate-600">{body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-normal text-emerald-700">Capabilities</p>
+          <h2 className="mt-3 text-4xl font-semibold tracking-normal text-slate-950">The skills I bring into product teams</h2>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <SkillGroup title="SQA Engineering" items={sqaSkills} />
+          <SkillGroup title="UI/UX Design" items={uxSkills} />
+        </div>
+      </section>
+
+      <section className="bg-slate-950 text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-normal text-emerald-300">Toolbox</p>
+            <h2 className="mt-3 text-4xl font-semibold tracking-normal text-white">Tools I use to test, design, and collaborate</h2>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {tools.map((tool) => (
+              <div key={tool} className="rounded-lg border border-white/10 bg-white/5 px-4 py-4 text-sm font-medium text-slate-100">
+                {tool}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-8 px-6 py-20 lg:grid-cols-2 lg:px-8">
+        <Image
+          src="/images/hrms.png"
+          alt="HRMS product design preview"
+          width={1000}
+          height={720}
+          className="rounded-lg border border-slate-200 bg-white object-cover shadow-sm"
+        />
+        <div className="self-center">
+          <p className="text-sm font-semibold uppercase tracking-normal text-emerald-700">Current focus</p>
+          <h2 className="mt-3 text-4xl font-semibold tracking-normal text-slate-950">Improving product confidence from both QA and UX angles.</h2>
+          <p className="mt-5 text-lg leading-8 text-slate-700">
+            I’m especially interested in dashboards, enterprise workflows, e-commerce journeys, and products where
+            reliability and usability directly affect business outcomes.
+          </p>
+        </div>
+      </section>
     </main>
   );
-};
+}
 
-export default About;
+const SkillGroup = ({ title, items }: { title: string; items: string[] }) => (
+  <article className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+    <h3 className="text-xl font-semibold tracking-normal text-slate-950">{title}</h3>
+    <div className="mt-5 flex flex-wrap gap-2">
+      {items.map((item) => (
+        <span key={item} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-700">
+          {item}
+        </span>
+      ))}
+    </div>
+  </article>
+);

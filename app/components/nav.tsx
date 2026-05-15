@@ -1,62 +1,84 @@
-import React, { useState } from "react";
-import { HiMenu, HiX } from "react-icons/hi";
-import Link from "next/link";
+"use client";
 
-const Nav: React.FC = () => {
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+
+const links = [
+  { href: "/about", label: "About" },
+  { href: "/portfolio", label: "Work" },
+  { href: "/contact", label: "Contact" },
+];
+
+const Nav = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
   return (
-    <>
-      <nav className="max-w-6xl  mx-auto flex justify-between items-center p-4 bg-transparent text-white/90">
-        <div className="text-xl font-bold">
-          <Link href="/">Rayhan</Link>
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-slate-50/90 backdrop-blur">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8" aria-label="Primary navigation">
+        <Link href="/" className="text-lg font-semibold tracking-normal text-slate-950" onClick={() => setIsOpen(false)}>
+          Rayhan
+        </Link>
+
+        <div className="hidden items-center gap-2 md:flex">
+          {links.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`rounded-md px-3 py-2 text-sm font-medium transition ${
+                  active ? "bg-slate-950 text-white" : "text-slate-700 hover:bg-white hover:text-slate-950"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <a
+            href="mailto:saifullahemo@gmail.com"
+            className="ml-2 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:border-slate-400 hover:bg-slate-100"
+          >
+            Hire me
+          </a>
         </div>
-        <button onClick={toggleMenu} className="focus:outline-none z-50 relative md:hidden">
-          {isOpen ? <HiX className="text-2xl" /> : <HiMenu className="text-2xl" />}
+
+        <button
+          type="button"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((open) => !open)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-950 md:hidden"
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
-        {/* Desktop menu */}
-        <div className="hidden md:flex gap-8">
-          <Link href="/about" className="hover:text-gray-300">About</Link>
-          <Link href="/portfolio" className="hover:text-gray-300">Portfolio</Link>
-          <Link href="/contact" className="hover:text-gray-300">Contact</Link>
-        </div>
       </nav>
 
-      {/* Mobile menu */}
       {isOpen && (
-        <div className="fixed inset-0 bg-[#001326]/90 text-white z-40 md:hidden">
-          <div className="h-full max-w-6xl w-full items-start mx-auto grid mt-40 grid-cols-1 gap-8 p-8">
-            <div className="flex flex-col justify-center items-start space-y-8">
-              <Link href="/about" onClick={closeMenu} className="text-3xl hover:text-gray-300">About</Link>
-              <Link href="/portfolio" onClick={closeMenu} className="text-3xl hover:text-gray-300">Portfolio</Link>
-              <Link href="/contact" onClick={closeMenu} className="text-3xl hover:text-gray-300">Contact</Link>
-            </div>
-            {/* <div className="p-8 w-full">
-              <form className="max-w-md mx-auto space-y-4">
-                <div>
-                  <input type="text" placeholder="Name" className="w-full p-4 text-xs bg-gray-200/10 text-white rounded" />
-                </div>
-                <div>
-                  <input type="email" placeholder="Email" className="w-full p-4 text-xs bg-gray-200/10 text-white rounded" />
-                </div>
-                <div>
-                  <textarea placeholder="Message" className="w-full p-4 text-xs bg-gray-200/10 text-white rounded" rows={4}></textarea>
-                </div>
-                <button type="submit" className="w-full p-4 bg-sky-950/60 text-white/80 font-bold hover:bg-sky-900/60 rounded">Send</button>
-              </form>
-            </div> */}
+        <div className="border-t border-slate-200 bg-white px-6 py-4 md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-2">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="rounded-md px-3 py-3 text-base font-medium text-slate-800 hover:bg-slate-100"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href="mailto:saifullahemo@gmail.com"
+              className="mt-2 rounded-md bg-slate-950 px-3 py-3 text-center text-base font-semibold text-white"
+            >
+              Hire me
+            </a>
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 };
 

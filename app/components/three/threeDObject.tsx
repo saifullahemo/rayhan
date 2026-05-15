@@ -9,11 +9,11 @@ interface SceneProps {
 }
 
 const Scene: React.FC<SceneProps> = ({ opacity }) => {
-  const group = useRef<THREE.Group>();
-  const camera = useRef<THREE.PerspectiveCamera>();
-  const scene = useRef<THREE.Scene>();
-  const renderer = useRef<THREE.WebGLRenderer>();
-  const controls = useRef<OrbitControls>();
+  const group = useRef<THREE.Group | null>(null);
+  const camera = useRef<THREE.PerspectiveCamera | null>(null);
+  const scene = useRef<THREE.Scene | null>(null);
+  const renderer = useRef<THREE.WebGLRenderer | null>(null);
+  const controls = useRef<OrbitControls | null>(null);
   // const canvasContainer = useRef<HTMLDivElement>();
   const canvasContainer = useRef<HTMLDivElement | null>(null); // Updated type
 

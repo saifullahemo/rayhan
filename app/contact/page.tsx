@@ -1,156 +1,143 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import Nav from "../components/nav";
-import Character from '../components/three/character';
-import {BackgroundDots, FloatingParticles} from "../portfolio/BackgroundElements";
-import {ScrollProgress} from "../portfolio/ScrollElements";
-import {SocialLinks} from "../portfolio/SocialLinks";
+"use client";
 
-const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+import { FormEvent, useState } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import Nav from "../components/nav";
+
+type FormState = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+const initialForm: FormState = {
+  name: "",
+  email: "",
+  message: "",
+};
+
+export default function Contact() {
+  const [formData, setFormData] = useState<FormState>(initialForm);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
-    setFormData(prev => ({ ...prev, [id]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setLoading(true);
     setStatus(null);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        setStatus('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('Failed to send message.');
+      if (!response.ok) {
+        throw new Error("Request failed");
       }
-    } catch (error) {
-      console.error('Error sending message:', error);
-      setStatus('An error occurred. Please try again.');
+
+      setStatus("Thanks. Your message has been sent.");
+      setFormData(initialForm);
+    } catch {
+      setStatus("The form could not send right now. You can email me directly instead.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="bg-gradient-to-b text-white from-[#001F3F] to-[#002C4F] pt-4 relative min-h-screen">
-      <BackgroundDots />
-      <FloatingParticles />
+    <main className="min-h-screen bg-slate-50 text-slate-950">
       <Nav />
-      <ScrollProgress />
-      <SocialLinks />
 
-      {/* Character with smooth animation */}
-      <motion.div
-        className="z-0 sm:top-1/2 sm:left-1/2 md:top-20 md:left-[30%] absolute"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-      >
-        <Character />
-      </motion.div>
+      <section className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:px-8 lg:py-24">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-normal text-emerald-700">Contact</p>
+          <h1 className="mt-3 text-4xl font-semibold leading-tight tracking-normal text-slate-950 md:text-6xl">
+            Let’s make your product easier to trust.
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-slate-700">
+            Share what you’re building, what feels risky, or where the experience needs improvement. I’ll reply with
+            a practical next step.
+          </p>
 
-      <div className="flex items-center justify-center max-w-6xl w-full mx-auto relative z-10 min-h-screen px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 w-full">
-          
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-10 text-white"
-          >
-            <p className="text-sm text-white/90 font-normal tracking-widest">
-              Experience the Impact of Collaboration
-            </p>
-            <h1 className="text-4xl md:text-5xl text-white font-normal">Let's Connect!</h1>
-            <div className="space-y-8 ">
-              {[{ href: "https://github.com/saifullahemo", Icon: FaGithub, label: "GitHub" },
-                { href: "https://linkedin.com/in/saifullahemo", Icon: FaLinkedin, label: "LinkedIn" },
-                { href: "mailto:saifullahemo@gmail.com", Icon: FaEnvelope, label: "Email" }
-              ].map((link, index) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  className="flex items-center space-x-4 text-white/90 hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.2, duration: 0.5 }}
-                >
-                  <link.Icon size={24} />
-                  <span>{link.label}</span>
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.form
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="space-y-4"
-          >
-            {(['name', 'email', 'message'] as const).map((field, index) => (
-              <motion.div
-                key={field}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 + index * 0.2, duration: 0.5 }}
-              >
-                <label htmlFor={field} className="sr-only text-xs">
-                  {field.charAt(0).toUpperCase() + field.slice(1)}
-                </label>
-                {field !== 'message' ? (
-                  <input
-                    type={field}
-                    id={field}
-                    placeholder={field === 'name' ? "Full Name" : "example@gmail.com"}
-                    className="w-full p-4 text-xs rounded-lg bg-gray-200/10 text-gray-200 focus:outline-none"
-                    value={formData[field]}
-                    onChange={handleChange}
-                  />
-                ) : (
-                  <textarea
-                    id={field}
-                    placeholder="Message"
-                    rows={4}
-                    className="w-full p-4 rounded-lg text-xs bg-gray-200/10 text-gray-200 focus:outline-none"
-                    value={formData[field]}
-                    onChange={handleChange}
-                  />
-                )}
-              </motion.div>
-            ))}
-            <motion.button
-              type="submit"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.0, duration: 0.5 }}
-              className="w-full py-3 rounded-lg bg-sky-950/60 text-white/80 font-medium hover:bg-sky-900/60"
-              disabled={loading}
-            >
-              {loading ? 'Sending...' : 'Send Message'}
-            </motion.button>
-            {status && <p className="text-white/80 mt-4">{status}</p>}
-          </motion.form>
+          <div className="mt-10 space-y-3">
+            <SocialLink href="mailto:saifullahemo@gmail.com" icon={Mail} label="saifullahemo@gmail.com" />
+            <SocialLink href="https://github.com/saifullahemo" icon={Github} label="GitHub" />
+            <SocialLink href="https://linkedin.com/in/saifullahemo" icon={Linkedin} label="LinkedIn" />
+          </div>
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default Contact;
+        <form onSubmit={handleSubmit} className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+          <div className="grid gap-5">
+            <label className="grid gap-2 text-sm font-semibold text-slate-800">
+              Name
+              <input
+                required
+                type="text"
+                value={formData.name}
+                onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
+                className="h-12 rounded-md border border-slate-300 bg-white px-4 text-base font-normal text-slate-950 outline-none transition focus:border-emerald-700 focus:ring-4 focus:ring-emerald-100"
+                placeholder="Your name"
+              />
+            </label>
+
+            <label className="grid gap-2 text-sm font-semibold text-slate-800">
+              Email
+              <input
+                required
+                type="email"
+                value={formData.email}
+                onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
+                className="h-12 rounded-md border border-slate-300 bg-white px-4 text-base font-normal text-slate-950 outline-none transition focus:border-emerald-700 focus:ring-4 focus:ring-emerald-100"
+                placeholder="you@example.com"
+              />
+            </label>
+
+            <label className="grid gap-2 text-sm font-semibold text-slate-800">
+              Message
+              <textarea
+                required
+                rows={7}
+                value={formData.message}
+                onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
+                className="resize-none rounded-md border border-slate-300 bg-white px-4 py-3 text-base font-normal text-slate-950 outline-none transition focus:border-emerald-700 focus:ring-4 focus:ring-emerald-100"
+                placeholder="Tell me about the product, timeline, and what you need help with."
+              />
+            </label>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="h-12 rounded-md bg-slate-950 px-5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? "Sending..." : "Send message"}
+            </button>
+
+            {status && <p className="text-sm leading-6 text-slate-600">{status}</p>}
+          </div>
+        </form>
+      </section>
+    </main>
+  );
+}
+
+const SocialLink = ({
+  href,
+  icon: Icon,
+  label,
+}: {
+  href: string;
+  icon: typeof Mail;
+  label: string;
+}) => (
+  <a
+    href={href}
+    target={href.startsWith("http") ? "_blank" : undefined}
+    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+    className="inline-flex items-center gap-3 rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-300 hover:text-emerald-700"
+  >
+    <Icon className="h-5 w-5" />
+    {label}
+  </a>
+);
