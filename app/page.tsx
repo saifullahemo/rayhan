@@ -1,191 +1,95 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ExternalLink, ShieldCheck, Sparkles, TestTube2 } from "lucide-react";
+import { ArrowRight, Check, ExternalLink } from "lucide-react";
+import EngineeringVisual from "./components/engineering-visual";
 import Nav from "./components/nav";
 import projects from "./portfolio/softCard.json";
 
 const featuredProjects = projects.slice(0, 3);
 
-const strengths = [
-  {
-    icon: ShieldCheck,
-    title: "Quality strategy",
-    body: "Test planning, coverage mapping, bug triage, and release confidence for complex web products.",
-  },
-  {
-    icon: TestTube2,
-    title: "Automation mindset",
-    body: "Practical Cypress, API, regression, and performance checks that support faster product cycles.",
-  },
-  {
-    icon: Sparkles,
-    title: "Usability lens",
-    body: "UI/UX review, journey mapping, and interface feedback that make products easier to trust and use.",
-  },
-];
-
-const stats = [
-  { value: "7+", label: "Product projects" },
-  { value: "95%", label: "Bug detection rate" },
-  { value: "40%", label: "Performance gains" },
+const practices = [
+  "Risk-aware test planning",
+  "Manual, API, and automation testing",
+  "Usability-focused product review",
+  "Clear defect reporting and collaboration",
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-950">
+    <main className="min-h-screen overflow-hidden bg-[#07111f] text-slate-100">
       <Nav />
 
-      <section className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-12 px-6 py-12 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
-        <div className="max-w-3xl">
-          <p className="mb-5 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm">
-            SQA Engineer + UI/UX Consultant
-          </p>
-          <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-normal text-slate-950 md:text-7xl">
-            Abu Rayhan
-          </h1>
-          <p className="mt-6 max-w-2xl text-xl leading-8 text-slate-700">
-            I help teams ship reliable, usable digital products through thoughtful QA strategy,
-            automation, and a practical eye for user experience.
-          </p>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-            >
-              View work
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:border-slate-400 hover:bg-slate-100"
-            >
-              Start a conversation
-            </Link>
+      <section className="relative isolate">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_20%,rgba(34,211,238,0.16),transparent_29rem),radial-gradient(circle_at_15%_85%,rgba(59,130,246,0.13),transparent_30rem)]" />
+        <div className="mx-auto grid min-h-[calc(100vh-4.5rem)] max-w-7xl items-center gap-14 px-5 py-16 sm:px-6 lg:grid-cols-[1fr_0.9fr] lg:px-8 lg:py-20">
+          <div className="max-w-3xl">
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-cyan-200">Software quality assurance + UI/UX</p>
+            <h1 className="mt-6 text-5xl font-semibold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-7xl">
+              Build confidence into every product release.
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+              I’m Abu Rayhan, a Software Quality Assurance Engineer and UI/UX Consultant. I help teams examine the details that shape reliable, useful digital experiences.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link href="/portfolio" className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200">
+                Explore selected work <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/5">
+                Start a conversation
+              </Link>
+            </div>
           </div>
-
-          <dl className="mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-slate-200 pt-6">
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <dt className="text-2xl font-semibold text-slate-950">{stat.value}</dt>
-                <dd className="mt-1 text-sm leading-5 text-slate-600">{stat.label}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <div className="relative grid gap-4">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {featuredProjects.slice(0, 2).map((project) => (
-              <div key={project.id} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                <Image
-                  src={project.imageUrl}
-                  alt={`${project.projectName} interface preview`}
-                  width={720}
-                  height={520}
-                  className="aspect-[4/3] w-full object-cover"
-                  priority={project.id === 1}
-                />
-                <div className="p-4">
-                  <p className="text-sm font-semibold text-slate-950">{project.projectName}</p>
-                  <p className="mt-1 text-xs text-slate-600">{project.projectType}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-            <Image
-              src={featuredProjects[2].imageUrl}
-              alt={`${featuredProjects[2].projectName} interface preview`}
-              width={1200}
-              height={620}
-              className="aspect-[16/7] w-full object-cover"
-            />
-          </div>
+          <EngineeringVisual />
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-16 lg:grid-cols-3 lg:px-8">
-          {strengths.map((item) => (
-            <article key={item.title} className="rounded-lg border border-slate-200 p-6">
-              <item.icon className="h-6 w-6 text-emerald-700" />
-              <h2 className="mt-5 text-xl font-semibold tracking-normal text-slate-950">{item.title}</h2>
-              <p className="mt-3 text-base leading-7 text-slate-600">{item.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <section className="border-y border-white/10 bg-[#0a1728]">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-8">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-normal text-emerald-700">Selected work</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-normal text-slate-950">Case studies with measurable outcomes</h2>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-200">How I work</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Quality and usability are part of the same conversation.</h2>
           </div>
-          <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-emerald-700">
-            See all projects
-            <ExternalLink className="h-4 w-4" />
-          </Link>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {practices.map((practice) => (
+              <div key={practice} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.025] p-4">
+                <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-cyan-300 text-slate-950"><Check className="h-3.5 w-3.5" /></span>
+                <p className="text-sm leading-6 text-slate-200">{practice}</p>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-200">Selected work</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Product work across quality and experience.</h2>
+          </div>
+          <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 transition hover:text-cyan-100">View all projects <ExternalLink className="h-4 w-4" /></Link>
+        </div>
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {featuredProjects.map((project) => (
-            <Link
-              href="/portfolio"
-              key={project.id}
-              className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <Image
-                src={project.imageUrl}
-                alt={`${project.projectName} screenshot`}
-                width={720}
-                height={520}
-                className="aspect-[4/3] w-full object-cover"
-              />
+            <Link href="/portfolio" key={project.id} className="group overflow-hidden rounded-2xl border border-white/10 bg-[#0a1728] transition hover:-translate-y-1 hover:border-cyan-200/35">
+              <Image src={project.imageUrl} alt={`${project.projectName} interface preview`} width={720} height={520} className="aspect-[4/3] w-full object-cover opacity-85 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100" />
               <div className="p-5">
-                <div className="flex items-center justify-between gap-4">
-                  <h3 className="text-xl font-semibold tracking-normal text-slate-950">{project.projectName}</h3>
-                  <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-900">
-                    {project.status}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{project.description}</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-cyan-200">{project.projectType}</p>
+                <h3 className="mt-2 text-xl font-semibold text-white">{project.projectName}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-400">{project.description}</p>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="bg-slate-950 text-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-normal text-emerald-300">Working style</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-normal text-white">A QA process that also respects the user.</h2>
+      <section className="border-t border-white/10 bg-cyan-300 text-slate-950">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-5 py-16 sm:px-6 md:flex-row md:items-end lg:px-8">
+          <div className="max-w-2xl">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em]">Let’s collaborate</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Have a product experience that needs a closer look?</h2>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {["Map risk and user journeys", "Design practical test coverage", "Automate repetitive checks", "Report issues with clear context"].map((item) => (
-              <div key={item} className="flex gap-3 rounded-lg border border-white/10 bg-white/5 p-5">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-emerald-300" />
-                <p className="text-sm leading-6 text-slate-200">{item}</p>
-              </div>
-            ))}
-          </div>
+          <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800">Contact me <ArrowRight className="h-4 w-4" /></Link>
         </div>
-      </section>
-
-      <section className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-8">
-        <h2 className="text-4xl font-semibold tracking-normal text-slate-950">Have a product that needs sharper QA or cleaner UX?</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-600">
-          Let’s talk about the product, the risks, and the fastest way to make the experience more reliable.
-        </p>
-        <Link
-          href="/contact"
-          className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-emerald-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-800"
-        >
-          Contact me
-          <ArrowRight className="h-4 w-4" />
-        </Link>
       </section>
     </main>
   );
