@@ -2,8 +2,8 @@ import './globals.scss'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Abu Rayhan | SQA Engineer and UI/UX Consultant',
-  description: 'Portfolio of Abu Rayhan, an SQA Engineer and UI/UX Consultant focused on reliable, usable digital products.',
+  title: 'Abu Rayhan | Software Quality & UX',
+  description: 'Portfolio of Abu Rayhan, a Software Quality Assurance Engineer and UI/UX Consultant.',
 }
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   )
